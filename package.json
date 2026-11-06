@@ -1,0 +1,11 @@
+{
+  "name": "argus-local",
+  "version": "0.1.0",
+  "description": "A local multistream viewer for YouTube, HLS, DASH and video URLs.",
+  "type": "module",
+  "bin": { "argus": "cli.mjs" },
+  "engines": { "node": ">=22" },
+  "files": ["cli.mjs", "server.mjs", "storage.mjs", "state.mjs", "app.js", "index.html", "display.html", "style.css", "RUNBOOK.md"],
+  "scripts": { "start": "node cli.mjs", "test": "node --test *.test.mjs", "test:package": "node scripts/verify-package.mjs" },
+  "dependencies": { "dashjs": "5.2.1", "hls.js": "1.7.4" }
+}
