@@ -1,14 +1,18 @@
 import http from 'node:http';
 import { readFileSync } from 'node:fs';
 import { randomUUID } from 'node:crypto';
+import { createRequire } from 'node:module';
+import { pathToFileURL } from 'node:url';
 import { normalizeState } from './state.mjs';
 import { openStorage, defaultDataDir } from './storage.mjs';
 
 const root = new URL('./', import.meta.url);
+const require = createRequire(import.meta.url);
+const dependency = (specifier, fallback) => { try { return pathToFileURL(require.resolve(specifier)).href; } catch { return fallback; } };
 const files = {
   '/': 'index.html', '/display': 'display.html', '/app.js': 'app.js', '/style.css': 'style.css', '/state.mjs': 'state.mjs',
-  '/vendor/hls.min.js': 'node_modules/hls.js/dist/hls.min.js',
-  '/vendor/dash.all.min.js': 'node_modules/dashjs/dist/modern/umd/dash.all.min.js'
+  '/vendor/hls.min.js': dependency('hls.js/dist/hls.min.js', 'node_modules/hls.js/dist/hls.min.js'),
+  '/vendor/dash.all.min.js': dependency('dashjs', 'node_modules/dashjs/dist/modern/umd/dash.all.min.js')
 };
 
 export async function startServer({ port = 8765, dataDir = defaultDataDir(), legacyFile = new URL('settings.json', root), log = console.log, warn = console.warn } = {}) {
