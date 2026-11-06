@@ -2,6 +2,8 @@
 
 Up to twelve streams on one TV, and you pick the one you hear. Argus runs on your own computer, with one window to drive it and another to watch. It's named after the giant with a hundred eyes. Twelve is plenty.
 
+![The Argus control room in dark mode: six stream panels, stream one focused and listening](.github/ARGUS.webp)
+
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-letitbedull-ffdd00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/letitbedull)
 
 ## Start it
